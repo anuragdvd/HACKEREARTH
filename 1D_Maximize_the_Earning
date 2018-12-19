@@ -1,0 +1,37 @@
+// SOLUTION TO https://www.hackerearth.com/practice/data-structures/arrays/1-d/practice-problems/algorithm/maximize-the-earning-137963bc-323025a6/
+// MAKE SURE TO COUNT FIRST BUILDING
+
+#include<bits/stdc++.h>
+#define M 1000000007
+#define fr(i,c,b) for(int i=c;i<b;i++)
+#define si(x) int x; scanf("%d", &x)
+#define sll(x) ll x; scanf("%lld", &x)
+#define pi(x) printf("%d", x)
+#define pll(x) printf("%lld", x)
+#define nl printf("\n")
+
+typedef long long int ll; 
+
+using namespace std;
+
+int main()
+{
+    si(n);
+    while(n--)
+    {   sll(h);
+         si(r);
+        ll a[h];
+        fr(i,0,h)
+            scanf("%lld",&a[i]);
+        ll ans=1;
+        int temp=a[0];
+        fr(i,0,h)
+        {
+            if(a[i]>temp)
+            {    ans++;
+            temp=a[i]; }
+        }
+       
+        cout<<ans*r<<endl;
+    }
+}
