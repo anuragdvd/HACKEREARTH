@@ -1,0 +1,57 @@
+// https://www.hackerearth.com/challenges/competitive/codemonk-stacks-queues-1/algorithm/monk-and-philosophers-stone/
+
+#include<bits/stdc++.h>
+#define fr(i,c,b) for(int i=c;i<b;i++)
+#define si(x) int x; scanf("%d", &x)
+#define sll(x) ll x; scanf("%lld", &x)
+#define pi(x) printf("%d", x)
+#define pll(x) printf("%lld", x)
+#define nl printf("\n")
+#define watch(x) cout << (#x) << " is " << (x) << endl
+
+typedef long long int ll;
+
+using namespace std;
+
+
+ll sum(stack<int> s)
+{
+    ll ans=0;
+    while(!s.empty())
+    {
+        ans+=s.top();
+        s.pop();
+    }
+    return ans;
+}
+
+int main()
+{
+   
+    
+    si(n);
+    vector<int> a;
+    fr(i,0,n)
+        {si(x); a.push_back(x);}
+    si(q);
+    ll k=0;
+    stack<int> s;
+    si(x);
+    int f=0;
+    while(q--)
+    {
+        string st;
+        cin>>st;
+        if(st[0]=='H')
+            s.push(a[k++]);
+        else
+        {
+            s.pop();
+        }
+        if(sum(s)==x)
+          {  pi(s.size()); nl; f=1; break;}
+    }
+    if(f==0)
+        cout<<"-1"<<endl;
+
+}
