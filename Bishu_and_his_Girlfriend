@@ -1,0 +1,62 @@
+/* Question Link : https://www.hackerearth.com/practice/algorithms/graphs/depth-first-search/practice-problems/algorithm/bishu-and-his-girlfriend/submissions/
+Algorithm Used: Single Source Shortest Path by using DFS */ 
+
+#include<bits/stdc++.h>
+#define fr(i,c,b) for(int i=c;i<b;i++)
+#define frl(i,c,b) for(ll i=c;i<b;i++)
+#define si(x) int x; cin>>x;
+#define pi(x) printf("%d", x)
+#define pll(x) printf("%lld", x)
+#define nl printf("\n")
+#define watch(x) cout << (#x) << " is " << (x) << endl
+#define MAX 1000001
+  
+typedef long long int ll;
+ 
+using namespace std;
+
+ll dist[1001];
+vector<bool> visited;
+
+void dfs(vector<vector<ll>> &graph,int node,int d)
+{
+    visited[node]=true;
+	dist[node]=d;
+
+	for(auto i:graph[node])
+	{
+		if(!visited[i])
+		{
+			dfs(graph,i,d+1);
+		}
+	}
+}
+ 
+int main()
+{
+    si(n); 
+    vector<vector<ll>> graph;
+    graph.assign(n+1,vector<ll>());
+	visited.assign(n+1,false);
+	fr(i,0,n+1)   dist[i]=0;
+    fr(i,0,n-1)
+    {
+        si(u); si(v); graph[u].push_back(v); graph[v].push_back(u);
+    }
+    si(q);
+	ll girls[q];
+	fr(i,0,q)
+	{
+		si(x); girls[i]=x;
+	}
+	dfs(graph,1,0);
+    int ans,mn=INT_MAX;
+    fr(i,0,q)
+    {
+        if(dist[girls[i]]<mn)
+        {
+            mn=dist[girls[i]]; ans=girls[i];
+        }
+    } 
+    cout<<ans;
+}
